@@ -3,8 +3,14 @@
 <h5>Seleccione la region</h5>
 <div class="row">
     <div class="col">
+        <button *ngFor="let region of regiones" class="btn btn-outline-primary"
+            [class]="(region==regionActiva) ? 'active' : 'btn btn-outline-primary'" (click)="activarRegion(region)">
+            {{region | titlecase}}
+        </button>
+        <hr>
         <button *ngFor="let subregion of subregiones" class="btn btn-outline-primary"
-            [class]="(subregion==subregionActiva) ? 'active' : 'btn btn-outline-primary'" (click)="activarSubregion(subregion)">
+            [class]="(subregion==subregionActiva) ? 'active' : 'btn btn-outline-primary'"
+            (click)="activarSubregion(subregion)">
             {{subregion | titlecase}}
         </button>
     </div>

@@ -9,7 +9,15 @@ import { PaisService } from '../../services/pais.service';
 })
 
 export class PorSubregionComponent {
-  subregiones: string[] = ['Eastern Europe', 'Northern Europe', 'Southern Europe', 'Western Europe'];
+  regiones: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
+  subregiones: string[] = [];
+  subregionesEuropa: string[] = ['Eastern Europe', 'Northern Europe', 'Southern Europe', 'Western Europe'];
+  subregionesAfrica: string[] = ['Northern Africa', 'Eastern Africa', 'Middle Africa', 'Southern Africa', 'Western Africa'];
+  subregionesAmerica: string[] = ['North America', 'South America', 'Central America', 'Caribbean'];
+  subregionesAsia: string[] = ['Central Asia', 'Eastern Asia', 'South-eastern Asia', 'Southern Asia', 'Western Asia'];
+  subregionesOceania: string[] = ['Australia and New Zealand', 'Melanesia ', 'Micronesia', 'Polynesia'];
+
+  regionActiva: string = '';
   subregionActiva: string = '';
   termino: string = '';
   hayError: boolean = false;
@@ -17,16 +25,47 @@ export class PorSubregionComponent {
 
   constructor(private paisService: PaisService) { }
 
-  activarSubregion(subregion: string) {
-    if(subregion == this.subregionActiva){
+  activarRegion(region: string) {
+    if (region == this.regionActiva) {
       return;
     }
-    
-    this.subregionActiva = subregion;
-    this.buscarRegion(this.subregionActiva);
+
+    this.regionActiva = region;
+
+    switch (this.regionActiva) {
+      case 'africa':
+        this.subregiones = this.subregionesAfrica;
+        this.activarSubregion(this.subregiones[0]);
+        break;
+      case 'europe':
+        this.subregiones = this.subregionesEuropa;
+        this.activarSubregion(this.subregiones[0]);
+        break;
+      case 'americas':
+        this.subregiones = this.subregionesAmerica;
+        this.activarSubregion(this.subregiones[0]);
+        break;
+      case 'asia':
+        this.subregiones = this.subregionesAsia;
+        this.activarSubregion(this.subregiones[0]);
+        break;
+      case 'oceania':
+        this.subregiones = this.subregionesOceania;
+        this.activarSubregion(this.subregiones[0]);
+        break;
+    }
   }
 
-  buscarRegion(termino: string) {
+  activarSubregion(subregion: string) {
+    if (subregion == this.subregionActiva) {
+      return;
+    }
+
+    this.subregionActiva = subregion;
+    this.buscarSubregion(this.subregionActiva);
+  }
+
+  buscarSubregion(termino: string) {
     this.termino = termino;
     this.hayError = false;
 
