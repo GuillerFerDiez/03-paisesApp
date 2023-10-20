@@ -32,4 +32,9 @@ export class PaisService {
     const url = `${this.apiUrl}/region/${termino}?fields=${this.fields}`;
     return this.http.get<Country[]>(url);
   }
+
+  buscarPorSubregion(termino: string) {
+    const url = `${this.apiUrl}/subregion/${termino}?fields=${this.fields}`;
+    return this.http.get<Country[]>(url);
+  }
 }

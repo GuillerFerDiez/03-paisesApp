@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { PaisTablaComponent } from './components/pais-tabla/pais-tabla.component';
 import { PaisImputComponent } from './components/pais-imput/pais-imput.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PorSubregionComponent } from './pages/por-subregion/por-subregion.component';
 
 
 
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     PorRegionComponent,
     VerPaisComponent,
     PaisTablaComponent,
-    PaisImputComponent
+    PaisImputComponent,
+    PorSubregionComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     PorCapitalComponent,
     PorPaisComponent,
     PorRegionComponent,
+    PorSubregionComponent,
     VerPaisComponent
   ]
 })
